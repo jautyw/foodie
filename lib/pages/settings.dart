@@ -1,28 +1,39 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dynamic_icon/flutter_dynamic_icon.dart';
-import 'package:foodie/components/constants/colours.dart';
 import 'package:share_plus/share_plus.dart';
-import '../components/my_button.dart';
 
-class SettingsPage extends StatelessWidget {
-  const SettingsPage({super.key});
+class SettingsPage extends StatefulWidget {
+  const SettingsPage({Key? key}) : super(key: key);
+
+  @override
+  State<SettingsPage> createState() => _SettingsPageState();
+}
+
+class _SettingsPageState extends State<SettingsPage> {
+  final user = FirebaseAuth.instance.currentUser!;
+
+  void signUserOut() {
+    FirebaseAuth.instance.signOut();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           actions: [],
-          backgroundColor: tdBlack,
+          backgroundColor: Colors.green,
           title: const Text('Settings'),
           centerTitle: true,
         ),
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.grey[100],
         body: SafeArea(
-            child: Center(
-                child: SingleChildScrollView(
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          child: ListView(children: [
             // Text('Change your app icon here'),
             // SizedBox(height: 20),
             // Use Builder to get the widget context
@@ -55,27 +66,76 @@ class SettingsPage extends StatelessWidget {
             //                   fontWeight: FontWeight.bold,
             //                   fontSize: 16)))),
             // ),
-
+            SizedBox(height: 20),
             GestureDetector(
               onTap: () => shareApp(context),
               child: Container(
                   padding: const EdgeInsets.all(25),
                   margin: const EdgeInsets.symmetric(horizontal: 25),
                   decoration: BoxDecoration(
-                      color: tdBlack, borderRadius: BorderRadius.circular(8)
-                  ),
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(8)),
                   child: const Center(
-                      child: Text('Share Foodie to Family and Friends',
+                      child: Text('Share Foodie to Family and Friends 🔗',
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
-                              fontSize: 16)
-                      )
-                  )
-              ),
+                              fontSize: 16)))),
+            ),
+            SizedBox(height: 20),
+            GestureDetector(
+              onTap: () {},
+              child: Container(
+                  padding: const EdgeInsets.all(25),
+                  margin: const EdgeInsets.symmetric(horizontal: 25),
+                  decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(8)),
+                  child: const Center(
+                      child: Text('Change App Icon 📱',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16)))),
+            ),
+            SizedBox(height: 20),
+            GestureDetector(
+              onTap: () {},
+              child: Container(
+                  padding: const EdgeInsets.all(25),
+                  margin: const EdgeInsets.symmetric(horizontal: 25),
+                  decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(8)),
+                  child: const Center(
+                      child: Text('Follow us on social media 🐦',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16)))),
+            ),
+            SizedBox(height: 20),
+            GestureDetector(
+              onTap: showDialog.() => ,
+              // onTap: signUserOut,
+              // onTap: () {
+              //   Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsPage()));
+              // },
+              child: Container(
+                  padding: const EdgeInsets.all(25),
+                  margin: const EdgeInsets.symmetric(horizontal: 25),
+                  decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(8)),
+                  child: const Center(
+                      child: Text('Log out 👋',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16)))),
             ),
           ]),
-        ))));
+        ));
   }
 
   void shareApp(BuildContext context) {
@@ -86,6 +146,7 @@ class SettingsPage extends StatelessWidget {
       text,
     );
   }
+}
 
 // changeAppIcon() async {
 //   try {
@@ -98,7 +159,6 @@ class SettingsPage extends StatelessWidget {
 //     debugPrint('Exception: ${e.toString()}');
 //   }
 // }
-}
 
 // class SettingsPage extends StatelessWidget {
 //   const SettingsPage({super.key});

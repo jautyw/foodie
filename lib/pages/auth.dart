@@ -1,12 +1,17 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:foodie/pages/home_page.dart';
+import 'package:foodie/pages/home.dart';
 import 'package:foodie/pages/onboarding_screens.dart';
 import 'package:foodie/services/local_auth.dart';
 
-class AuthPage extends StatelessWidget {
-  const AuthPage({super.key});
+class AuthPage extends StatefulWidget {
+  AuthPage({Key? key}) : super(key: key);
 
+  @override
+  State<AuthPage> createState() => _AuthPageState();
+}
+
+class _AuthPageState extends State<AuthPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,16 +23,15 @@ class AuthPage extends StatelessWidget {
             // user is logged in
             if (snapshot.hasData) {
               print('snapshot has data and should show home screen');
+              // if (LocalAuth.authenticate() == true) {
+              //   return OnboardingScreens();
+              // };
               // TODO investigate why this does not load: return Home();
-              if (LocalAuth.authenticate() == true) {
-                return OnboardingScreens();
-              };
-              return HomePage();
+              return ItemListPage();
             } else {
               print('snapshot does not have data and will show onboarding screens');
-              // print(snapshot);
+              print(snapshot);
               // user is NOT logged in
-              print('user is NOT logged in');
               return OnboardingScreens();
               // return LoginOrRegisterPage();
             }

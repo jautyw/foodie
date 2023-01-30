@@ -12,7 +12,6 @@ class LocalAuth {
   static Future<bool> authenticate() async {
     try {
       if (!await _canAuthenticate()) return false;
-
       return await _auth.authenticate(
         localizedReason: 'Use Face ID to authenticate',
           authMessages: const <AuthMessages>[
@@ -26,7 +25,7 @@ class LocalAuth {
           ],
       );
     } catch (e) {
-      debugPrint('error $e');
+      debugPrint('ERROR $e');
       return false;
     }
   }
