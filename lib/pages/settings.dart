@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:foodie/pages/onboarding_screens.dart';
 import 'package:share_plus/share_plus.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -116,7 +117,33 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
             SizedBox(height: 20),
             GestureDetector(
-              onTap: showDialog.() => ,
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: Text('Log Out'),
+                    content: Text('Are you sure you want to log out?'),
+                    actions: [
+                      TextButton(
+                        child: Text("Yes"),
+                        onPressed: () {
+                          signUserOut();
+                          Navigator.push(context, MaterialPageRoute (
+                            builder: (BuildContext context) => OnboardingScreens(),
+                          ),
+                          );
+                        },
+                      ),
+                      TextButton(
+                        child: Text("No"),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ],
+                  ),
+                );
+              },
               // onTap: signUserOut,
               // onTap: () {
               //   Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsPage()));
