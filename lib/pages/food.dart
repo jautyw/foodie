@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:foodie/pages/addFood.dart';
 import 'package:foodie/pages/home_page.dart';
 import 'package:foodie/pages/recipe.dart';
 import 'package:foodie/pages/savings.dart';
@@ -39,23 +40,6 @@ class _FoodState extends State<Food> {
     _foundToDo = todosList;
     super.initState();
   }
-
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
-  ];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -245,8 +229,22 @@ class _FoodState extends State<Food> {
         // foregroundColor: Colors.green,
         backgroundColor: Colors.green,
         tooltip: 'Add an item',
-        onPressed: () {},
         child: Icon(Icons.add),
+        onPressed: () {
+          Navigator.of(context).push(PageRouteBuilder(
+            pageBuilder: (context, animation, secondaryAnimation) => AddFood(),
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+              const begin = Offset(0.0, 1.0);
+              const end = Offset.zero;
+              final tween = Tween(begin: begin, end: end);
+              final offsetAnimation = animation.drive(tween);
+              return SlideTransition(
+                position: offsetAnimation,
+                child: child,
+              );
+            },
+          ));
+        },
       ),
     );
   }

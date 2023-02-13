@@ -6,7 +6,9 @@ class AuthService {
   // google sign in
   signInWithGoogle() async {
     // begin interactive sign in process
-    final GoogleSignInAccount? gUser = await GoogleSignIn(clientId: DefaultFirebaseOptions.currentPlatform.iosClientId).signIn();
+    // final GoogleSignInAccount? gUser = await GoogleSignIn(clientId: DefaultFirebaseOptions.currentPlatform.iosClientId).signIn();
+    final GoogleSignInAccount? gUser = await GoogleSignIn().signIn();
+
     // obtain auth details from request
     final GoogleSignInAuthentication gAuth = await gUser!.authentication;
 

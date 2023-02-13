@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
       // home: LoginPage(),
       home: AuthPage(),
       // theme: _buildTheme(Brightness.dark),
+      // onGenerateRoute: AppRouter.generateRoute,
     );
   }
 

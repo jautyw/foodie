@@ -127,11 +127,11 @@ class _SettingsPageState extends State<SettingsPage> {
                       TextButton(
                         child: Text("Yes"),
                         onPressed: () {
-                          signUserOut();
-                          Navigator.push(context, MaterialPageRoute (
-                            builder: (BuildContext context) => OnboardingScreens(),
-                          ),
-                          );
+                          // signUserOut;
+                          // Navigator.push(context, MaterialPageRoute (
+                          //   builder: (BuildContext context) => OnboardingScreens(),
+                          // ),
+                          // );
                         },
                       ),
                       TextButton(
