@@ -1,13 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:foodie/pages/profile.dart';
-import 'package:foodie/pages/recipe.dart';
-import 'package:foodie/pages/savings.dart';
-import 'package:foodie/pages/settings.dart';
-import 'package:foodie/pages/todo.dart';
-import 'package:foodie/pages/models/utils.dart';
+import 'package:foodie/profile/presentation/profile.dart';
+import 'package:foodie/recipe/presentation/recipe.dart';
+import 'package:foodie/savings/presentation/savings.dart';
+import 'package:foodie/settings/presentation/settings.dart';
 import 'package:flutter/material.dart';
-import 'food.dart';
-import 'models/item_model.dart';
+import '../components/model/todo.dart';
+import '../food/models/item_model.dart';
+import '../food/models/utils.dart';
+import '../food/presentation/food.dart';
 
 class ItemListPage extends StatefulWidget {
   const ItemListPage({super.key});
@@ -18,7 +18,6 @@ class ItemListPage extends StatefulWidget {
 
 class _ItemListPageState extends State<ItemListPage> {
   List<Item> items = Utils.getMockedItems();
-
   final todosList = ToDo.todoList();
   List<ToDo> _foundToDo = [];
   final _todoController = TextEditingController();

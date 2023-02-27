@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:foodie/pages/login_or_register.dart';
-import 'package:foodie/pages/login_page.dart';
+import 'package:foodie/login/login_or_register.dart';
+import 'package:foodie/login/login_page.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../pages/intro_page/intro_page1.dart';
-import '../pages/intro_page/intro_page2.dart';
-import '../pages/intro_page/intro_page3.dart';
+import 'intro_page1.dart';
+import 'intro_page2.dart';
+import 'intro_page3.dart';
 
 class OnboardingScreens extends StatefulWidget {
   OnboardingScreens({super.key});

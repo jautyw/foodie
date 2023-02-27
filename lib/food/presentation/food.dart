@@ -1,17 +1,17 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:foodie/pages/addFood.dart';
-import 'package:foodie/pages/home_page.dart';
-import 'package:foodie/pages/recipe.dart';
-import 'package:foodie/pages/savings.dart';
-import 'package:foodie/pages/settings.dart';
-import 'package:foodie/pages/todo.dart';
-import 'package:foodie/pages/models/utils.dart';
+import 'package:foodie/home/home_page.dart';
+import 'package:foodie/recipe/presentation/recipe.dart';
+import 'package:foodie/savings/presentation/savings.dart';
+import 'package:foodie/settings/presentation/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:string_extensions/string_extensions.dart';
-import 'models/item_model.dart';
+import '../../components/model/todo.dart';
+import 'addFood.dart';
+import '../models/item_model.dart';
+import '../models/utils.dart';
 
 class Food extends StatefulWidget {
   const Food({super.key});
@@ -22,6 +22,7 @@ class Food extends StatefulWidget {
 
 class _FoodState extends State<Food> {
   List<Item> items = Utils.getMockedItems();
+  // List items = Utils.getMockedItems();
 
   final todosList = ToDo.todoList();
   List<ToDo> _foundToDo = [];

@@ -3,7 +3,7 @@ import 'package:foodie/components/my_text_field.dart';
 import 'package:foodie/components/my_button.dart';
 import 'package:foodie/components/square_tile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:foodie/pages/register.dart';
+import 'package:foodie/login/register.dart';
 import 'package:foodie/services/auth_service.dart';
 
 class LoginPage extends StatefulWidget {

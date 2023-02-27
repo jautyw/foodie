@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:foodie/pages/todo.dart';
+
+import '../../components/model/todo.dart';
 
 class ToDoItem extends StatelessWidget {
   final ToDo todo;

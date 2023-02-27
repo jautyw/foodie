@@ -1,8 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:foodie/pages/home.dart';
-import 'package:foodie/pages/onboarding_screens.dart';
+import 'package:foodie/home/home.dart';
 import 'package:foodie/services/local_auth.dart';
+
+import '../onboarding/presentation/onboarding_screens.dart';
 
 class AuthPage extends StatefulWidget {
   AuthPage({Key? key}) : super(key: key);
