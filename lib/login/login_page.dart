@@ -3,7 +3,7 @@ import 'package:foodie/components/my_text_field.dart';
 import 'package:foodie/components/my_button.dart';
 import 'package:foodie/components/square_tile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:foodie/services/auth_service.dart';
+import 'package:foodie/home/home.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../services/firebase_options.dart';
@@ -36,16 +36,19 @@ class _LoginPageState extends State<LoginPage> {
     );
 
     // finally sign in
-    // try {
-    //   await FirebaseAuth.instance.signInWithCredential(
-    //       credential
-    //   );
-    //   Navigator.pop(context);
-    // } on FirebaseAuthException catch (e){
-    //   print('e.code is');
-    //   print(e.code);
-    // }
-    await FirebaseAuth.instance.signInWithCredential(credential);
+    try {
+      await FirebaseAuth.instance.signInWithCredential(
+          credential
+      );
+      // Navigator.pop(context);
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => ItemListPage()),
+      );
+    } on FirebaseAuthException catch (e){
+      print('e.code is');
+      print(e.code);
+    }
   }
 
   void signUserIn() async {
@@ -236,7 +239,7 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   SquareTile(
                     imagePath: 'lib/images/google.png',
-                    onTap: () => AuthService().signInWithGoogle(),
+                    onTap: () => signInWithGoogle(),
                   ),
                   SizedBox(width: 25),
                   SquareTile(
