@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:foodie/home/home.dart';
+import 'package:foodie/home/home_page.dart';
 import 'package:foodie/services/local_auth.dart';
 
 import '../onboarding/presentation/onboarding_screens.dart';
@@ -28,6 +29,7 @@ class _AuthPageState extends State<AuthPage> {
               //   return OnboardingScreens();
               // };
               // TODO investigate why this does not load: return Home();
+              // Navigator.pop(context);
               return ItemListPage();
             } else {
               print('snapshot does not have data and will show onboarding screens');

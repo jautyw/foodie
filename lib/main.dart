@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:foodie/routes.dart';
 import 'package:foodie/services/auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'services/firebase_options.dart';
+import 'package:auto_route/auto_route.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,6 +21,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      // initialRoute: getRoutes('/authpage'),
+      // routes: getRoutes(),
+      // routerDelegate: _router.delegate(),
+      // routeInformationParser: _router.defaultRouteParser(),
       // home: LoginPage(),
       home: AuthPage(),
       // theme: _buildTheme(Brightness.dark),

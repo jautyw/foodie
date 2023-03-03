@@ -21,3 +21,22 @@
 //     page: () => AppNavigationScreen(),
 //   ),
 // }
+
+import 'package:foodie/login/login_or_register.dart';
+
+class routes {
+  static String LoginOrRegisterPage = 'LoginOrRegisterPage';
+  static String LoginPage = 'LoginPage';
+  // static String LoginOrRegisterPage = 'LoginOrRegisterPage';
+  // static String LoginOrRegisterPage = 'LoginOrRegisterPage';
+  // static String LoginOrRegisterPage = 'LoginOrRegisterPage';
+  // static String LoginOrRegisterPage = 'LoginOrRegisterPage';
+  // static String LoginOrRegisterPage = 'LoginOrRegisterPage';
+
+}
+
+// getRoutes() {
+//   return {
+//   routes.LoginOrRegisterPage: (context) => LoginOrRegisterPage();
+//   };
+// }

@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
 
+import '../../onboarding/presentation/onboarding_screens.dart';
+
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
 
@@ -12,8 +14,14 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
   final user = FirebaseAuth.instance.currentUser!;
 
-  void signUserOut() {
-    FirebaseAuth.instance.signOut();
+  void signUserOut() async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      print('signed out');
+    }  on FirebaseException catch (e){
+      print('e.code is');
+      print(e.code);
+    }
   }
 
   @override
@@ -126,11 +134,11 @@ class _SettingsPageState extends State<SettingsPage> {
                       TextButton(
                         child: Text("Yes"),
                         onPressed: () {
-                          // signUserOut;
-                          // Navigator.push(context, MaterialPageRoute (
-                          //   builder: (BuildContext context) => OnboardingScreens(),
-                          // ),
-                          // );
+                          signUserOut();
+                          Navigator.push(context, MaterialPageRoute (
+                            builder: (BuildContext context) => OnboardingScreens(),
+                          ),
+                          );
                         },
                       ),
                       TextButton(

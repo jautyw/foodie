@@ -3,8 +3,10 @@ import 'package:foodie/components/my_text_field.dart';
 import 'package:foodie/components/my_button.dart';
 import 'package:foodie/components/square_tile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:foodie/login/register.dart';
 import 'package:foodie/services/auth_service.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
+import '../services/firebase_options.dart';
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
@@ -18,6 +20,33 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+
+  signInWithGoogle() async {
+    // begin interactive sign in process
+    final GoogleSignInAccount? gUser = await GoogleSignIn(clientId: DefaultFirebaseOptions.currentPlatform.iosClientId).signIn();
+    // final GoogleSignInAccount? gUser = await GoogleSignIn().signIn();
+
+    // obtain auth details from request
+    final GoogleSignInAuthentication gAuth = await gUser!.authentication;
+
+    // create a new credential for user
+    final credential = GoogleAuthProvider.credential(
+        accessToken: gAuth.accessToken,
+        idToken: gAuth.idToken
+    );
+
+    // finally sign in
+    // try {
+    //   await FirebaseAuth.instance.signInWithCredential(
+    //       credential
+    //   );
+    //   Navigator.pop(context);
+    // } on FirebaseAuthException catch (e){
+    //   print('e.code is');
+    //   print(e.code);
+    // }
+    await FirebaseAuth.instance.signInWithCredential(credential);
+  }
 
   void signUserIn() async {
     print(emailController.text);
