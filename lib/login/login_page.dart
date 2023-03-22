@@ -20,6 +20,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  bool showProgress = false;
 
   signInWithGoogle() async {
     // begin interactive sign in process
@@ -41,10 +42,13 @@ class _LoginPageState extends State<LoginPage> {
           credential
       );
       // Navigator.pop(context);
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => ItemListPage()),
-      );
+      // Navigator.push(
+      //   context,
+      //   MaterialPageRoute(builder: (context) => ItemListPage()),
+      // );
+      // Navigator.pushNamedAndRemoveUntil(context, 'itemsPage');
+
+      Navigator.pushNamedAndRemoveUntil(context, 'itemsPage', (_) => false);
     } on FirebaseAuthException catch (e){
       print('e.code is');
       print(e.code);
@@ -232,6 +236,12 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
 
+              Center(
+                // use ternary operator to decide when to show progress indicator
+                child: showProgress
+                    ? CircularProgressIndicator()
+                    : Text('Tap me'),
+              ),
               SizedBox(height: 40),
 
               Row(
@@ -240,6 +250,21 @@ class _LoginPageState extends State<LoginPage> {
                   SquareTile(
                     imagePath: 'lib/images/google.png',
                     onTap: () => signInWithGoogle(),
+                    // onTap: () async {
+                    //   // set the progress indicator to true so it will be visible
+                    //   setState(() {
+                    //     showProgress = true;
+                    //   });
+                    //   // perform asynchronous task here
+                    //   await Future.delayed(Duration(seconds: 4), null);
+                    //
+                    //   setState(() {
+                    //     // set the progress indicator to true so it would not be visible
+                    //     showProgress = false;
+                    //     // navigate to your desired page
+                    //     signInWithGoogle();
+                    //   });
+                    // },
                   ),
                   SizedBox(width: 25),
                   SquareTile(

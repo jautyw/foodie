@@ -5,8 +5,6 @@ import 'package:foodie/savings/presentation/savings.dart';
 import 'package:foodie/settings/presentation/settings.dart';
 import 'package:flutter/material.dart';
 import '../components/model/todo.dart';
-import '../food/models/item_model.dart';
-import '../food/models/utils.dart';
 import '../food/presentation/food.dart';
 
 class ItemListPage extends StatefulWidget {
@@ -17,8 +15,8 @@ class ItemListPage extends StatefulWidget {
 }
 
 class _ItemListPageState extends State<ItemListPage> {
-  List<Item> items = Utils.getMockedItems();
-  final todosList = ToDo.todoList();
+  // List<Item> items = Utils.getMockedItems();
+  // final todosList = ToDo.todoList();
   List<ToDo> _foundToDo = [];
   final _todoController = TextEditingController();
   final user = FirebaseAuth.instance.currentUser!;
@@ -30,11 +28,11 @@ class _ItemListPageState extends State<ItemListPage> {
     FirebaseAuth.instance.signOut();
   }
 
-  @override
-  void initState() {
-    _foundToDo = todosList;
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   _foundToDo = todosList;
+  //   super.initState();
+  // }
 
   // static const TextStyle optionStyle =
   // TextStyle(fontSize: 30, fontWeight: FontWeight.bold);

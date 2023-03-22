@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:foodie/food/presentation/workingCamera.dart';
 import 'package:foodie/home/home_page.dart';
 import 'package:foodie/recipe/presentation/recipe.dart';
 import 'package:foodie/savings/presentation/savings.dart';
@@ -9,7 +10,6 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:string_extensions/string_extensions.dart';
 import '../../components/model/todo.dart';
-import 'addFood.dart';
 import '../models/item_model.dart';
 import '../models/utils.dart';
 
@@ -232,20 +232,25 @@ class _FoodState extends State<Food> {
         tooltip: 'Add an item',
         child: Icon(Icons.add),
         onPressed: () {
-          Navigator.of(context).push(PageRouteBuilder(
-            pageBuilder: (context, animation, secondaryAnimation) => AddFood(),
-            transitionsBuilder: (context, animation, secondaryAnimation, child) {
-              const begin = Offset(0.0, 1.0);
-              const end = Offset.zero;
-              final tween = Tween(begin: begin, end: end);
-              final offsetAnimation = animation.drive(tween);
-              return SlideTransition(
-                position: offsetAnimation,
-                child: child,
-              );
-            },
-          ));
-        },
+          Navigator.pushNamed(context, '/workingCameraPage');
+        }
+        //   Navigator.of(context).push(PageRouteBuilder(
+        //     settings: RouteSettings(
+        //        name: '/workingCameraPage',
+        //     ),
+        //     // pageBuilder: (context, animation, secondaryAnimation) => AddFood(),
+        //     transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        //       const begin = Offset(0.0, 1.0);
+        //       const end = Offset.zero;
+        //       final tween = Tween(begin: begin, end: end);
+        //       final offsetAnimation = animation.drive(tween);
+        //       return SlideTransition(
+        //         position: offsetAnimation,
+        //         child: child,
+        //       );
+        //     },
+        //   ));
+        // },
       ),
     );
   }
